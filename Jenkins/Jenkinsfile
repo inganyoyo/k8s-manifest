@@ -12,29 +12,34 @@ pipeline {
         GIT_CREDENTIALS_ID = 'git-jenkins-token'
     }
     stages {
-
-        stage('Update GIT') {
+        stage('Build') {
             steps {
-                container('git-temp') {
-
-                         git credentialsId: "${GIT_CREDENTIALS_ID}",
-                             url: "https://github.com/inganyoyo/k8s-manifest.git",
-                             branch: "${REPOSITORY_BRANCH}"
-
-                            //withCredentials([usernamePassword(credentialsId: ${GIT_CREDENTIALS_ID}, passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                            //    sh "git config user.email inganyoyo@me.com"
-                            //    sh "git config user.name inganyoyo"
-                            //    sh "cat hello-devops-gradle/deployment.yaml"
-                            //    sh 'sed -i "s/hello-devops-springboot:.*/hello-devops-springboot:${BUILD_NUMBER}/g" hello-devops-gradle/deployment.yaml'
-                            //    sh 'cat hello-devops-gradle/deployment.yaml'
-                            //    sh "git add ."
-                            //    sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
-                            //    sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/k8s-manifest.git HEAD:main"
-                           // }
-
-                }
+            echo 'Building..'
             }
         }
+
+//         stage('Update GIT') {
+//             steps {
+//                 container('git-temp') {
+//
+//                          git credentialsId: "${GIT_CREDENTIALS_ID}",
+//                              url: "https://github.com/inganyoyo/k8s-manifest.git",
+//                              branch: "${REPOSITORY_BRANCH}"
+//
+//                             //withCredentials([usernamePassword(credentialsId: ${GIT_CREDENTIALS_ID}, passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+//                             //    sh "git config user.email inganyoyo@me.com"
+//                             //    sh "git config user.name inganyoyo"
+//                             //    sh "cat hello-devops-gradle/deployment.yaml"
+//                             //    sh 'sed -i "s/hello-devops-springboot:.*/hello-devops-springboot:${BUILD_NUMBER}/g" hello-devops-gradle/deployment.yaml'
+//                             //    sh 'cat hello-devops-gradle/deployment.yaml'
+//                             //    sh "git add ."
+//                             //    sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
+//                             //    sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/k8s-manifest.git HEAD:main"
+//                            // }
+//
+//                 }
+//             }
+//         }
     }
 }
 
