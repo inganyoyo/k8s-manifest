@@ -4,7 +4,7 @@ metadata:
   name: custom-container
 spec:
   containers:
-    - name: git-source
+    - name: git
       image: alpine/git:v2.36.2
       command:
         - /bin/cat
