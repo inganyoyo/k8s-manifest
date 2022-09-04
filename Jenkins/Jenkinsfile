@@ -15,7 +15,7 @@ pipeline {
 
         stage('Update GIT') {
             steps {
-                container('git') {
+                container('git-temp') {
 
                          git credentialsId: "${GIT_CREDENTIALS_ID}",
                              url: "https://github.com/inganyoyo/k8s-manifest.git",
