@@ -13,11 +13,6 @@ pipeline {
         GIT_CREDENTIALS_ID = 'git-jenkins-token'
     }
     stages {
-        stage('Build') {
-            steps {
-            echo 'Building..'
-            }
-        }
 
     stage('K8S Manifest Update') {
       steps {
