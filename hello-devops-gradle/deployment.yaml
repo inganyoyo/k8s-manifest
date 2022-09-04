@@ -6,7 +6,8 @@ metadata:
   labels:
     app: hello-argo
 spec:
-  replicas: 1
+  replicas: 2
+  revisionHistoryLimit: 3
   selector:
     matchLabels:
       app: hello-argo
