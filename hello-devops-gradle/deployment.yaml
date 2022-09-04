@@ -6,7 +6,7 @@ metadata:
   labels:
     app: hello-argo
 spec:
-  replicas: 2
+  replicas: 3
   revisionHistoryLimit: 3
   selector:
     matchLabels:
@@ -18,6 +18,6 @@ spec:
     spec:
       containers:
         - name: hello-argo
-          image: inganyoyo/hello-devops-springboot:134
+          image: inganyoyo/hello-devops-springboot:139
           ports:
             - containerPort: 8080
