@@ -1,9 +1,10 @@
 pipeline {
-    agent {
-        kubernetes {
-          yamlFile 'Jenkins/container-builder.yaml'
-        }
-    }
+agent any
+//     agent {
+//         kubernetes {
+//           yamlFile 'Jenkins/container-builder.yaml'
+//         }
+//     }
 
     environment{
         SOURCE_REPOSITORY_URL = 'https://github.com/inganyoyo/hello-devops-gradle.git'
