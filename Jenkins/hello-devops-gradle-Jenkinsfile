@@ -14,19 +14,21 @@ pipeline {
     stages {
 
         stage('Update GIT') {
-            container('git') {
-                script {
-                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                        withCredentials([usernamePassword(credentialsId: ${GIT_CREDENTIALS_ID}, passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                            sh "git config user.email inganyoyo@me.com"
-                            sh "git config user.name inganyoyo"
-                            //sh "git switch master"
-                            sh "cat hello-devops-gradle/deployment.yaml"
-                            sh 'sed -i "s/hello-devops-springboot:.*/hello-devops-springboot:${BUILD_NUMBER}/g" hello-devops-gradle/deployment.yaml'
-                            sh 'cat hello-devops-gradle/deployment.yaml'
-                            sh "git add ."
-                            sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
-                            sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/k8s-manifest.git HEAD:main"
+            steps {
+                container('git') {
+                    script {
+                        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                            withCredentials([usernamePassword(credentialsId: ${GIT_CREDENTIALS_ID}, passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                                sh "git config user.email inganyoyo@me.com"
+                                sh "git config user.name inganyoyo"
+                                //sh "git switch master"
+                                sh "cat hello-devops-gradle/deployment.yaml"
+                                sh 'sed -i "s/hello-devops-springboot:.*/hello-devops-springboot:${BUILD_NUMBER}/g" hello-devops-gradle/deployment.yaml'
+                                sh 'cat hello-devops-gradle/deployment.yaml'
+                                sh "git add ."
+                                sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
+                                sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/k8s-manifest.git HEAD:main"
+                            }
                         }
                     }
                 }
