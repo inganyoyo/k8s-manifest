@@ -16,7 +16,7 @@ pipeline {
         stage('Update GIT') {
             steps {
                 container('git') {
-                    script {
+
                          git credentialsId: "${GIT_CREDENTIALS_ID}",
                              url: "https://github.com/inganyoyo/k8s-manifest.git",
                              branch: "${REPOSITORY_BRANCH}"
@@ -33,7 +33,6 @@ pipeline {
                                 sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/k8s-manifest.git HEAD:main"
                             }
 
-                    }
                 }
             }
         }
