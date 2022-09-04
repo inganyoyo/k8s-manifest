@@ -34,7 +34,7 @@ pipeline {
                 sh "git config --global user.name inganyoyo"
                 sh "git config --global --add safe.directory /home/jenkins/agent/workspace/hello-devops-gradle-updatemanifest"
                 sh 'git add hello-devops-gradle/deployment.yaml'
-                sh "git commit -m 'fix:${IMG_TAG} image versioning---%{COMMIT_MSG}---'"
+                sh "git commit -m 'fix:${IMG_TAG} image versioning---${COMMIT_MSG}---'"
                 sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/k8s-manifest.git HEAD:main"
             }
         }
